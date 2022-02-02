@@ -39,7 +39,7 @@ connection. The unD6IO-BT is being installed to act like a Bluetooth speaker wou
 process on the speaker, connect via your phone, and audio comes from your phone out of the speaker.
 
 Other members of the project team are working on the UI for the space which will take the form of a wall mounted touch
-panel to to provide information and control of the space: volume, radio station selection, and Bluetooth connectivity
+panel to provide information and control of the space: volume, radio station selection, and Bluetooth connectivity
 control, etc.
 
 ### Goal 1: Allow the user to connect their phone via Bluetooth
