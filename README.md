@@ -5,19 +5,21 @@ developing software systems that integrate with physical hardware to provide exc
 the built environment.
 
 Working through this assessment you will develop a _device driver_ that can communicate with a physical device as part
-of a wider project.
+of a wider project. Not only will this give us an idea of how you approach problems, it will also give you an idea of
+the types of problems and solutions that we're trying to develop at Vanti.
 
 There are no requirements for how you should complete this assessment, one of the things we are hoping to extract from
 your submission is what a good solution looks like to you. We aren't going to penalise spelling mistakes, time taken,
 how much Google is used, or how many approaches you try. Try to treat the assessment as if it were a real job, use all
 the tools and resources available to you.
 
-As we aren't going to be sat watching you complete this assessment, we'd like you to track your progress through the
-goals via commits. You can commit as often as you'd like, but we'd like to see one commit that indicates that you feel a
-specific goal is completed.
+Once completed, we'll review the code and arrange a follow-up conversation where we'd like to discuss your approach,
+andy challenges you faced, and how you overcame them - it might be useful to make notes for your own reference as you
+carry out the task.
 
-This assessment is for you as much as it is for us, we get an idea of how well you might fill the role and you get an
-idea of some of what would be involved when working here.
+As we aren't going to be sat watching you complete this assessment, we'd like you to track your progress through the
+goals via commits. You can commit as often or as little as you'd like, but we'd like to see one commit that indicates
+when you feel a specific goal is completed.
 
 ## Setup and submission
 
