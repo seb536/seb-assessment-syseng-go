@@ -6,7 +6,7 @@ type HasConnection interface {
 	ConnectionChanged(last Connection) (Connection, error)
 }
 
-// Connection indicated whether a remote device is connected via Bluetooth to a device.
+// Connection indicates whether a remote device is connected via Bluetooth to a device.
 type Connection int
 
 const (
