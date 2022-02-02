@@ -2,13 +2,18 @@ package comm
 
 import "io"
 
-// Endpoint defines the basic communication interface for a specific device.
-type Endpoint interface {
+// Transport defines the basic communication interface for a specific device.
+// Implementations of Transport would typically wrap underlying transport protocols like TCP, UDP, or serial ports.
+// Transport allows for a device driver to focus on the device protocol and not the mechanism for sending packets.
+type Transport interface {
 	io.ReadWriteCloser
 
 	// Connect returns when a connection to the endpoint has been established, or none could be.
 	// If the device is already connected, this method returns immediately.
 	// An error is returned if a connection could not be established.
+	//
+	// Note that even with transport protocols that do not require a connection, like UDP,
+	// Read and Write still require a Connect-ed Transport to function.
 	Connect() error
 
 	// Read implements the io.Reader interface, and reads up to len(p) bytes from an open connection.
