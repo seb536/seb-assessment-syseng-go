@@ -1,6 +1,6 @@
 package und6iobt
 
-import "github.com/vanti-dev/techass-syseng-go/comm"
+import "github.com/vanti-dev/assessment-syseng-go/comm"
 
 // Driver implements interrogation and control of a Q-SYS unD6IO-BT device.
 type Driver struct {
