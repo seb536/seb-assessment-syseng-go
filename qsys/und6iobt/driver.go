@@ -138,3 +138,58 @@ func (d Driver) ConnectionChanged(last bluetooth.Connection) (bluetooth.Connecti
 
 	return bluetooth.ConnectionUnknown, nil
 }
+
+func (d Driver) Name() (string, error) {
+	// call Get Bluetooth Friendly Name command (13.21)
+	// command: BTN<CR>
+	// Example Response: ACK BTN unD6IO-BT-010203<CR
+
+	fmt.Println("Name Function Called")
+
+	err:= d.Comm.Connect()
+	if (err != nil) {
+		return "", errors.New("connect failed")
+	}
+
+	n, err := d.Comm.Write([]byte("BTB\r"))
+    if err != nil {
+        return "", errors.New("write failed")
+    }
+    fmt.Println("wrote ", n, " bytes")
+	
+	//Create a byte array
+	buf := make([]byte, 8)
+	for {
+		n, err := d.Comm.Read(buf)
+		if err != nil {
+			return "", errors.New("read failed")
+		}
+		fmt.Printf("n = %v err = %v buf = %v\n", n, err, buf)
+		fmt.Printf("buf[:n] = %q\n", buf[:n])
+		if err == io.EOF {
+			break
+		}
+	}
+	str1 := string(buf[:])
+	split := strings.Split(str1, " ")
+	// need to remove carriage return character
+
+	if len(split) == 3 {
+		if(split[0] != "ACK") {
+			return "", errors.New("nack received")
+		}
+		if(split[1] != "BTN\r") {
+			return "", errors.New("incorrect response received")
+		}
+	} else {
+		return "", errors.New("response length incorrect")
+	}
+	friendly_name := split[2]
+
+	err = d.Comm.Close()
+	if (err != nil) {
+		return "", errors.New("close failed")
+	}
+
+	return friendly_name, nil
+}
