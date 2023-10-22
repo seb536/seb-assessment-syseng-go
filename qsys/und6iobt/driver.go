@@ -28,7 +28,7 @@ const (
 	ConnectedAVRCPAndPDUSupported = 5
 )
 
-// function used to get the response, do some basic checks on it and 
+// function used to get the response, do some basic checks on it and
 // returns an array of the response's fields
 func (d Driver) getResponse() ([]string, error) {
 
@@ -56,8 +56,8 @@ func (d Driver) getResponse() ([]string, error) {
 	return split, nil
 }
 
-// Implementation of the HasAnnonce interface used to activate the Bluetooth 
-// pairing process on the unD6IO-BT
+// Implementation of the HasAnnonce interface used to activate the Bluetooth
+// pairing process of the unD6IO-BT
 // The pairing/connect mode can be remotely activated by using the 'Activate Pairing' command.
 // see section 13.21 of the 'QSC unIFY 3rd Party Control Software API document'
 // Example command: BTB<CR>
@@ -71,7 +71,7 @@ func (d Driver) Announce() error {
 	}
 
 	// Request the activation of the Bluetooth pairing process
-	_ ,err = d.Comm.Write([]byte("BTB\r"))
+	_, err = d.Comm.Write([]byte("BTB\r"))
 	if err != nil {
 		return errors.New("BTB request failed")
 	}
@@ -109,7 +109,7 @@ func (d Driver) Announce() error {
 	return nil
 }
 
-// Implementation of the HasConnection interface used to report the Bluetooth 
+// Implementation of the HasConnection interface used to report the Bluetooth
 // connection status of the unD6IO-BT
 // The Bluetooth status can be remotely returned by using the 'Bluetooth Status' command.
 // see section 13.20 of the 'QSC unIFY 3rd Party Control Software API document'
@@ -127,7 +127,7 @@ func (d Driver) ConnectionChanged(last bluetooth.Connection) (bluetooth.Connecti
 	// initialise new connection status as current status
 	new := last
 
-	// loop until status are same
+	// loop until status are different
 	for last != new {
 
 		// Request the current bluetooth connection status
@@ -189,8 +189,8 @@ func (d Driver) ConnectionChanged(last bluetooth.Connection) (bluetooth.Connecti
 	return new, nil
 }
 
-// Implementation of the HasName interface used to get the Bluetooth 
-// Friendly Name on the unD6IO-BT
+// Implementation of the HasName interface used to get the Bluetooth
+// Friendly Name of the unD6IO-BT
 // The friendly name can be remotely read by using the 'Get Friendly Name' command.
 // see section 13.17 of the 'QSC unIFY 3rd Party Control Software API document'
 // Example command: BTN<CR>
